@@ -1,0 +1,60 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check TypeScript
+        run: yarn tsc --noEmit
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Check code formatting
+        run: yarn format --check
+
+      - name: Check for TypeScript errors
+        run: yarn tsc --noEmit --strict
+
+      - name: Run complexity analysis
+        run: |
+          echo "Checking for complex functions..."
+          npx ts-complexity --max-complexity 10 src/
+
+      - name: Check for unused dependencies
+        run: npx depcheck
+
+      - name: Check for duplicate code
+        run: npx jscpd src/
+
+      - name: Comment PR with quality report
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('quality-report.txt', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## Code Quality Report\n\n${report}`
+            }); 

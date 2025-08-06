@@ -45,6 +45,8 @@ Built for solo practitioners and boutique firms who want to save hours of manual
 - [GitHub Actions](https://github.com/features/actions) (CI/CD)
 - [Dotenv](https://github.com/motdotla/dotenv) (env config)
 - [Docker](https://www.docker.com/) *(planned)*
+- [Codecov](https://codecov.io/) (test coverage)
+- [Snyk](https://snyk.io/) (security scanning)
 
 ### Frontend *(planned)*
 
@@ -66,6 +68,55 @@ cp .env.example .env
 
 # Start the dev server
 yarn dev
+```
+
+## 🚀 GitHub Actions
+
+This project uses comprehensive GitHub Actions workflows for CI/CD:
+
+### Workflows
+
+- **CI** (`ci.yml`): Runs on every push/PR
+  - ✅ Multi-Node.js version testing (18, 20, 22)
+  - ✅ TypeScript type checking
+  - ✅ ESLint and Prettier validation
+  - ✅ Jest testing with coverage
+  - ✅ Security audits with Snyk
+  - ✅ Build verification
+
+- **Release** (`release.yml`): Automated releases
+  - 🚀 Semantic versioning
+  - 📦 Automatic changelog generation
+  - 🏷️ GitHub releases
+  - 🚀 Deployment triggers
+
+- **Code Quality** (`code-quality.yml`): Code analysis
+  - 🔍 Complexity analysis
+  - 📊 Duplicate code detection
+  - 🧹 Unused dependency checks
+  - 📝 PR quality reports
+
+- **Database** (`database.yml`): Database operations
+  - 🗄️ Schema validation
+  - 🔄 Migration checks
+  - 🧪 Database tests
+  - 📋 Prisma client generation
+
+- **Dependencies** (`dependencies.yml`): Dependency management
+  - 🔄 Weekly dependency updates
+  - 🔒 Security vulnerability checks
+  - 📋 Automated PR creation
+
+### Required Secrets
+
+Add these secrets to your GitHub repository:
+
+```bash
+# For security scanning
+SNYK_TOKEN=your_snyk_token
+
+# For code coverage (optional)
+CODECOV_TOKEN=your_codecov_token
 ```
 
 <details>
