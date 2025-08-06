@@ -25,7 +25,9 @@
     "@types/node": "^24.2.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
+    "commitizen": "^4.3.1",
     "commitlint": "^19.8.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
@@ -51,9 +53,15 @@
     "format": "prettier --write \"**/*.{ts,js,json}\"",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "commit": "cz"
   },
   "lint-staged": {
     "*.{ts,js,json}": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
