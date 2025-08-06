@@ -1,0 +1,49 @@
+{
+  "name": "avi_lawyer_ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/greatokonkwo/avi_lawyer_ai.git",
+  "author": "Great Okonkwo <great@wishroll.co>",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^6.13.0",
+    "dotenv": "^17.2.1",
+    "fastify": "^5.4.0",
+    "fastify-cors": "^6.1.0",
+    "fastify-helmet": "^7.1.0",
+    "prisma": "^6.13.0",
+    "zod": "^4.0.15"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.32.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@types/dotenv": "^8.2.3",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "commitlint": "^19.8.1",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.5.1",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.2.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "lint-staged": {
+    "*.{ts,js,json}": "eslint --fix"
+  }
+}
