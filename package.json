@@ -21,6 +21,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.3",
     "@types/dotenv": "^8.2.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.2.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
@@ -30,9 +31,11 @@
     "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
+    "jest": "^30.0.5",
     "jiti": "^2.5.1",
     "prettier": "^3.6.2",
     "semantic-release": "^24.2.7",
+    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2",
@@ -41,7 +44,14 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prepare": "husky install",
+    "lint": "eslint . --ext .ts,.js,.json",
+    "lint:fix": "eslint . --ext .ts,.js,.json --fix",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "lint-staged": {
     "*.{ts,js,json}": "eslint --fix"
