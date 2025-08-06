@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('@commitlint/types').Config} */
+const config = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [2, 'always', [
@@ -15,4 +16,6 @@ module.exports = {
       'build'
     ]]
   }
-}
+};
+
+module.exports = config; 
