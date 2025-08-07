@@ -63,12 +63,48 @@ Built for solo practitioners and boutique firms who want to save hours of manual
 # Install dependencies
 yarn install
 
-# Generate .env file from example
-cp .env.example .env
+# Setup environment (choose one)
+yarn env:setup    # Copy example environment
+yarn env:dev      # Setup development environment
+yarn env:test     # Setup testing environment
+yarn env:prod     # Setup production environment
 
 # Start the dev server
 yarn dev
 ```
+
+## 🌍 Environment Configuration
+
+This project supports three environments with separate configuration files:
+
+### Environment Files
+- `env.example` - Template with all available options
+- `env.development` - Development environment settings
+- `env.testing` - Testing environment settings  
+- `env.production` - Production environment settings
+
+### Quick Setup
+```bash
+# Development (default)
+yarn env:dev && yarn dev
+
+# Testing
+yarn env:test && yarn test
+
+# Production
+yarn env:prod && yarn start
+```
+
+### Key Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NODE_ENV` | Node environment | `development` |
+| `APP_ENV` | Application environment | `dev` |
+| `DATABASE_URL` | PostgreSQL connection | `postgresql://...` |
+| `JWT_SECRET` | JWT signing secret | `dev-jwt-secret...` |
+| `APP_PORT` | Server port | `3000` |
+| `LOG_LEVEL` | Logging level | `info` |
 
 ## 🚀 GitHub Actions
 
